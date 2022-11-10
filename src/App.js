@@ -1,8 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from 'react-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import Header from './components/Header'
 import Orders from './components/Orders';
 import Footer from './components/Footer';
+library.add(fab, faPlus)
 
 function App() {
   return (
