@@ -3,13 +3,15 @@ import OrderLine from "./OrderLine";
 
 function Orders(){
     const arr = [1, 2,3];
-    const rows = arr.map((row, index)=> <div key={index}>
-        < OrderLine/>
-    </div>)
+    const rows = arr.map((row, index)=> <OrderLine key={index}/>
+    )
     return <React.Fragment>
-        <div className="">
+        <form className="">
             {rows}
-        </div>
+            <div>
+                <button className="btn btn-primary btn-sm">Submit order</button>
+            </div>
+        </form>
     </React.Fragment>
 }
 
