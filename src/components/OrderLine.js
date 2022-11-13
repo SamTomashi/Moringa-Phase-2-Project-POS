@@ -2,16 +2,17 @@ import React, {useState, useEffect} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function OrderLine({order, orders, setOrders, index}){
-    const items = [
-        {
-            name: "shoes",
-            price: 3000
-        },
-        {
-            name: "trouser",
-            price: 1200
-        }
-    ]
+
+    const [items, setItems] = useState([])
+    
+
+    useEffect(()=> {
+        fetch('http://localhost:3004/items')
+        .then((response)=> response.json())
+        .then( data => setItems(data))
+        
+    }, [])
+
 
     const handleFormChange = (event)=> {
         let data = [...orders];
@@ -24,10 +25,14 @@ function OrderLine({order, orders, setOrders, index}){
         data[index]['itemPrice'] = itemPrice
         data[index]['lineTotal'] = itemPrice * data[index]['qty']
         setOrders(data)
-        console.log(data)
+        // console.log(data)
     }
 
     const removeOrder = (index)=> {
+        if(orders.length === 1){
+            alert("You can reomve the only remaining item, select an other item instead!")
+            return false;
+        }
         let data = [...orders];
         data.splice(index, 1)
         setOrders(data)
