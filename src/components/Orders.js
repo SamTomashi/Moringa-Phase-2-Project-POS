@@ -13,14 +13,6 @@ const [orders, setOrders] = useState([{
 }])
 
 
-const handleFormChange = (index, event) => {
-    let data = [...orders];
-    data[index][event.target.name] = event.target.value;
-    setOrders(data)
-
-
-}
-
 const addOrder = (event) => {
     event.preventDefault()
     let newOrder = { 
@@ -43,18 +35,14 @@ const submitOrders = (event) => {
 
 }
 
-const removeOrder = (index)=> {
-    let data = [...orders];
-    data.splice(index, 1)
-    setOrders(data)
-}
+
 
 return (
     <div className="container">
         <form onSubmit={submitOrders}>
             {
                 orders.map((order, index)=> {
-                    return <OrderLine order={order} handleFormChange={handleFormChange} removeOrder={removeOrder} index={index} key={index}/>
+                    return <OrderLine order={order} orders={orders} setOrders={setOrders} index={index} key={index}/>
                 })
             }
             <button className="btn btn-sm btn-dark" onClick={addOrder}>
