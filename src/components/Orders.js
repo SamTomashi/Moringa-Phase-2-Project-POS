@@ -1,18 +1,70 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import OrderLine from "./OrderLine";
 
 function Orders(){
-    const arr = [1, 2,3];
-    const rows = arr.map((row, index)=> <OrderLine key={index}/>
-    )
-    return <React.Fragment>
-        <form className="">
-            {rows}
-            <div>
-                <button className="btn btn-primary btn-sm">Submit order</button>
-            </div>
+
+const [orders, setOrders] = useState([{
+    itemName: "",
+    itemPrice: 0,
+    qty: 1,
+    lineTotal: 0
+}])
+
+
+const handleFormChange = (index, event) => {
+    let data = [...orders];
+    data[index][event.target.name] = event.target.value;
+    setOrders(data)
+
+
+}
+
+const addOrder = (event) => {
+    event.preventDefault()
+    let newOrder = { 
+        itemName: "",
+        itemPrice: 0,
+        qty: 1,
+        lineTotal: 0
+     }
+
+     setOrders([
+        ...orders,
+        newOrder
+     ])
+
+}
+
+const submitOrders = (event) => {
+    event.preventDefault()
+    console.log(orders)
+
+}
+
+const removeOrder = (index)=> {
+    let data = [...orders];
+    data.splice(index, 1)
+    setOrders(data)
+}
+
+return (
+    <div className="container">
+        <form onSubmit={submitOrders}>
+            {
+                orders.map((order, index)=> {
+                    return <OrderLine order={order} handleFormChange={handleFormChange} removeOrder={removeOrder} index={index} key={index}/>
+                })
+            }
+            <button className="btn btn-sm btn-dark" onClick={addOrder}>
+                <FontAwesomeIcon className="" icon="plus"/>
+            </button>
+            <button className="btn btn-sm" onClick={submitOrders}>Submit Order</button>
         </form>
-    </React.Fragment>
+        
+    </div>
+)
 }
 
 export default Orders
