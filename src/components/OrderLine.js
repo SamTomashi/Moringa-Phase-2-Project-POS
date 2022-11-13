@@ -2,14 +2,22 @@ import React, {useState, useEffect} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function OrderLine({order, handleFormChange, removeOrder, index}){
-
+    const items = [
+        {
+            name: "shoes",
+            price: 3000
+        },
+        {
+            name: "trouser",
+            price: 1200
+        }
+    ]
 
         const lineOrder = <div className="row m-1">
                     <div className="col-sm-3">
                         <select name="itemName" defaultValue={order.itemName} className="form-select form-select-sm" onChange={(event)=> handleFormChange(index, event)}>
                             <option>--Select Item--</option>
-                            <option value="item 1">Item 1</option>
-                            <option value="item 2">Item 2</option>
+                            {items.map((item, index)=> <option value={item.name} key={index}>{item.name}</option>)}
                         </select>
                     </div>
                     <div className="col-sm-2">
