@@ -1,36 +1,35 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function OrderLine(){
+function OrderLine({order, handleFormChange, removeOrder, index}){
 
-    const row = <React.Fragment>
-        <div className="mb-3 row">
-            <div className="col m-0 p-1">
-            <small className=" text-muted">Item</small><br></br>
-                <select className="form-select form-select-sm" name="item" onChange={()=>{}}>
-                    <option value="item 1">Item 1</option>
-                    <option value="item 2">Item 2</option>
-                </select>
-            </div>
-            <div className="col-2  m-0 p-1">
-            <small className=" text-muted">Price</small><br></br>
-                <input className="form-control form-control-sm" name="price" onChange={()=>{}} type="text" readOnly/>
-            </div>
-            <div className="col-2 m-0 p-1">
-                <small className=" text-muted">QTY</small><br></br>
-                <input className="form-control form-control-sm col-2" name="qty" onChange={()=>{}} type="number" value="1" min="1"/>
-            </div>
-            <div className="col  m-0 p-1">
-                <small className=" text-muted">Total</small><br></br>
-                <input className="form-control form-control-sm" name="lineTotal" readOnly onChange={()=>{}} type="text" value=""/>
-            </div>
-            <div className="col d-flex align-items-center">
-                <FontAwesomeIcon icon="plus" />
-            </div>
+
+        const lineOrder = <div className="row m-1">
+                    <div className="col-sm-3">
+                        <select name="itemName" defaultValue={order.itemName} className="form-select form-select-sm" onChange={(event)=> handleFormChange(index, event)}>
+                            <option>--Select Item--</option>
+                            <option value="item 1">Item 1</option>
+                            <option value="item 2">Item 2</option>
+                        </select>
+                    </div>
+                    <div className="col-sm-2">
+                        <input className="form-control form-control-sm" type="text" name="itemPrice" value={order.itemPrice} onChange={(event)=> handleFormChange(index, event)}/>
+                    </div>
+                    <div className="col-sm-2">
+                        <input className="form-control form-control-sm" type="number" name="qty" value={order.qty} onChange={(event)=> handleFormChange(index, event)}/>
+                    </div>
+                    <div className="col-sm-2">
+                        <input className="form-control form-control-sm" type="text" name="lineTotal" value={order.lineTotal} onChange={(event)=> handleFormChange(index, event)}/>
+                    </div>
+                    <div className="col-sm-2">
+                        <button className="btn btn-sm" onClick={()=>{removeOrder(index)}}>
+                            <FontAwesomeIcon icon="minus"/>
+                        </button>
+                    </div>
         </div>
-    </React.Fragment>
 
-    return row
+    return lineOrder
+
 }
 
 export default OrderLine
