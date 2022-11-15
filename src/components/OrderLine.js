@@ -7,7 +7,7 @@ function OrderLine({order, orders, setOrders, index}){
     
 
     useEffect(()=> {
-        fetch('http://localhost:3004/items')
+        fetch('https://tomashi.loca.lt/items')
         .then((response)=> response.json())
         .then( data => setItems(data))
         
@@ -41,21 +41,25 @@ function OrderLine({order, orders, setOrders, index}){
 
         const lineOrder = <div className="row m-1">
             <div className="col-sm-3">
+            <small className="form-label text-muted">Product Name</small>
                 <select name="itemName" defaultValue={order.itemName} className="form-select form-select-sm" onChange={(event)=> handleFormChange(event)}>
                     <option>--Select Item--</option>
                     {items.map((item, index)=> <option value={item.name} key={index}>{item.name}</option>)}
                 </select>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-2 ">
+            <small className="form-label text-muted">Unit Price</small>
                 <input className="form-control form-control-sm" type="text" name="itemPrice" value={order.itemPrice} onChange={(event)=> handleFormChange(event)}/>
             </div>
             <div className="col-sm-2">
+            <small className="form-label text-muted">QTY</small>
                 <input className="form-control form-control-sm" type="number" name="qty" value={order.qty} onChange={(event)=> handleFormChange(event)}/>
             </div>
             <div className="col-sm-2">
+            <small className="form-label text-muted">Total</small>
                 <input className="form-control form-control-sm" type="text" name="lineTotal" value={order.lineTotal} onChange={(event)=> handleFormChange(event)}/>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-2 pt-4">
                 <button className="btn btn-sm" onClick={()=>{removeOrder(index)}}>
                     <FontAwesomeIcon icon="minus"/>
                 </button>
