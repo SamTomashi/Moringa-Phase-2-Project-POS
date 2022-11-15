@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
@@ -9,9 +8,7 @@ import Orders from "./components/Orders";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
-} from "react-router-dom";
+  Route, Navigate} from "react-router-dom";
 library.add(fab, faPlus, faMinus)
 
 function App() {
@@ -21,8 +18,9 @@ function App() {
         <Router>
           <Header/>
           <Routes>
-            <Route exact path='/' element={<Pos/>} />
-            <Route exact path='/orders' element={<Orders/>} />
+            <Route  path='/pos' element={<Pos/>} />
+            <Route  path='/orders' element={<Orders/>} />
+            <Route path="/" element={<Navigate to="/pos" />} />
           </Routes>
         </Router>
         <Footer/>
