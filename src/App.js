@@ -15,14 +15,12 @@ function App() {
   return (
     
     <div className="container">
-        <Router>
           <Header/>
           <Routes>
+            <Route exact path="/" element={<Navigate to="/pos" />} />
             <Route  path='/pos' element={<Pos/>} />
             <Route  path='/orders' element={<Orders/>} />
-            <Route path="/" element={<Navigate to="/pos" />} />
           </Routes>
-        </Router>
         <Footer/>
     </div>
     
