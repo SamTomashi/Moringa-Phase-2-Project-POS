@@ -58,7 +58,7 @@ const total = orders.reduce((acc, currentValue)=> acc + currentValue.lineTotal, 
 return (
     <div className="container d-flex justify-content-between">
         <form className="border" onSubmit={submitOrders}>
-        <img className="mx-auto d-block w-25" src="images/supermarket.png" alt="logo"/>
+        <img className="mx-auto d-block w-25" src="/images/supermarket.png" alt="logo"/>
             {
                 orders.map((order, index)=> {
                     return <OrderLine order={order} orders={orders} setOrders={setOrders} index={index} key={index}/>
