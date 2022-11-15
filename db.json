@@ -87,6 +87,26 @@
         "qty": "22",
         "lineTotal": 858
       }
+    ],
+    [
+      {
+        "itemName": "Milk",
+        "itemPrice": 70,
+        "qty": 1,
+        "lineTotal": 70
+      },
+      {
+        "itemName": "Biscuits",
+        "itemPrice": 547,
+        "qty": 1,
+        "lineTotal": 547
+      },
+      {
+        "itemName": "Milk",
+        "itemPrice": 70,
+        "qty": 1,
+        "lineTotal": 70
+      }
     ]
   ]
 }
