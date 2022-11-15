@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Moringa-Phase-2-Project-POS/static/css/main.43e38169.css",
+    "main.js": "/Moringa-Phase-2-Project-POS/static/js/main.2a0cb54e.js",
+    "static/js/787.97339a5d.chunk.js": "/Moringa-Phase-2-Project-POS/static/js/787.97339a5d.chunk.js",
+    "index.html": "/Moringa-Phase-2-Project-POS/index.html",
+    "main.2a0cb54e.js.map": "/Moringa-Phase-2-Project-POS/static/js/main.2a0cb54e.js.map",
+    "787.97339a5d.chunk.js.map": "/Moringa-Phase-2-Project-POS/static/js/787.97339a5d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.43e38169.css",
+    "static/js/main.2a0cb54e.js"
+  ]
+}
