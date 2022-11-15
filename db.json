@@ -107,6 +107,48 @@
         "qty": 1,
         "lineTotal": 70
       }
+    ],
+    [
+      {
+        "itemName": "Biscuits",
+        "itemPrice": 547,
+        "qty": 1,
+        "lineTotal": 547
+      },
+      {
+        "itemName": "Bread",
+        "itemPrice": 150,
+        "qty": 1,
+        "lineTotal": 150
+      },
+      {
+        "itemName": "",
+        "itemPrice": 0,
+        "qty": 1,
+        "lineTotal": 0
+      }
+    ],
+    [
+      {
+        "itemName": "Biscuits",
+        "itemPrice": 547,
+        "qty": 1,
+        "lineTotal": 547
+      }
+    ],
+    [
+      {
+        "itemName": "Biscuits",
+        "itemPrice": 547,
+        "qty": "3",
+        "lineTotal": 1641
+      },
+      {
+        "itemName": "Milk",
+        "itemPrice": 70,
+        "qty": "8",
+        "lineTotal": 560
+      }
     ]
   ]
 }
