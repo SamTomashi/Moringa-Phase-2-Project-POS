@@ -1,75 +1,46 @@
-import React, {useState, useEffect} from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, {useState, useEffect} from "react"
 
-import OrderLine from "./OrderLine";
+const Orders = ()=> {
 
-function Orders(){
+    const [orders, setOrders] = useState([])
 
-const [orders, setOrders] = useState([{
-    itemName: "",
-    itemPrice: 0,
-    qty: 1,
-    lineTotal: 0
-}])
+    useEffect(()=> {
+        fetch('https://tomashi.loca.lt/orders')
+        .then(response => response.json())
+        .then(data => setOrders(data))
+    },[orders])
 
-
-const addOrder = (event) => {
-    event.preventDefault()
-    let newOrder = { 
-        itemName: "",
-        itemPrice: 0,
-        qty: 1,
-        lineTotal: 0
-     }
-
-     const lastOrderItem = orders[orders.length - 1]
-     if(lastOrderItem.itemName === ""){
-        alert("All order inputs are required before adding a new one!")
-       return
-     }
-
-     setOrders([
-        ...orders,
-        newOrder
-     ])
-
-}
-
-const submitOrders = async(event) => {
-    event.preventDefault()
-    const response = await fetch('http://localhost:3004/orders',{
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-        body: JSON.stringify(orders)
+    const order = orders.map((item, index)=> {
+        return <div className="accordion-item" key={index}>
+                    <h2 className="accordion-header" id={`flush-heading-${index}`}>
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#flush-collapse-${index}`} aria-expanded="false" aria-controls={`#flush-collapse-${index}`}>
+                            {`Order no ${index+1} with ${item.length} items`}
+                        </button>
+                    </h2>
+                    <div id={`#flush-collapse-${index}`} className="accordion-collapse collapse" aria-labelledby={`flush-heading-${index}`} data-bs-parent="#accordionFlushExample">
+                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    </div>
+                </div>
     })
-    .then((response)=> response.json())
-    .then(data=> data);
 
-    alert(`${response.length} items added successfully to your order!`)
+    return(
+        // <table class="table table-striped table-hover">
+        //     <thead>
+        //         <tr>
+        //             <th>#</th>
+        //             <th>Date</th>
+        //             <th>Total</th>
+        //         </tr>
+        //     </thead>
+        //     <tbody>
+                
+        //     </tbody>
+        // </table>
 
-}
-
-
-
-return (
-    <div className="container">
-        <form onSubmit={submitOrders}>
-            {
-                orders.map((order, index)=> {
-                    return <OrderLine order={order} orders={orders} setOrders={setOrders} index={index} key={index}/>
-                })
-            }
-            <button className="btn btn-sm btn-dark" onClick={addOrder}>
-                <FontAwesomeIcon className="" icon="plus"/>
-            </button>
-            <button className="btn btn-sm" onClick={submitOrders}>Submit Order</button>
-        </form>
-        
-    </div>
-)
+        <div className="accordion accordion-flush" id="accordionFlushExample">
+              {order}
+        </div>
+    )
 }
 
 export default Orders
