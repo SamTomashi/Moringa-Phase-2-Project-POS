@@ -11,35 +11,33 @@ const Orders = ()=> {
     },[orders])
 
     const order = orders.map((item, index)=> {
-        return <div className="accordion-item" key={index}>
-                    <h2 className="accordion-header" id={`flush-heading-${index}`}>
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#flush-collapse-${index}`} aria-expanded="false" aria-controls={`#flush-collapse-${index}`}>
-                            {`Order no ${index+1} with ${item.length} items`}
-                        </button>
-                    </h2>
-                    <div id={`#flush-collapse-${index}`} className="accordion-collapse collapse" aria-labelledby={`flush-heading-${index}`} data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                    </div>
-                </div>
+        return <tr key={index}>
+            <td>{item.date}</td>
+            <td>{item.customer_name}</td>
+            <td>{item.item_name}</td>
+            <td>{item.QTY}</td>
+            <td>{item.line_total}</td>
+        </tr>
+
     })
 
     return(
-        // <table class="table table-striped table-hover">
-        //     <thead>
-        //         <tr>
-        //             <th>#</th>
-        //             <th>Date</th>
-        //             <th>Total</th>
-        //         </tr>
-        //     </thead>
-        //     <tbody>
-                
-        //     </tbody>
-        // </table>
 
-        <div className="accordion accordion-flush" id="accordionFlushExample">
-              {order}
-        </div>
+        <table className="table table-dark tabel-sm table-stripped">
+            <thead>
+                <tr>
+                <th>Date</th>
+                <th>Customer Name</th>
+                <th>Item Name</th>
+                <th>QTY</th>
+                <th>Line Total</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                {order}
+            </tbody>
+        </table>
     )
 }
 

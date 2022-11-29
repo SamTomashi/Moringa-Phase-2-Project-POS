@@ -149,6 +149,22 @@
         "qty": "8",
         "lineTotal": 560
       }
+    ],
+    [
+      {
+        "itemName": "Milk",
+        "itemPrice": 70,
+        "qty": "2",
+        "lineTotal": 140
+      }
+    ],
+    [
+      {
+        "itemName": "Milk",
+        "itemPrice": 70,
+        "qty": "2",
+        "lineTotal": 140
+      }
     ]
   ]
 }
